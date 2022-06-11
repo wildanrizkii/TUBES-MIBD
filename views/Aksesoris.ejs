@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Pemilik</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="images/icons/Icons.png" />
+    <link rel="stylesheet"  href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"  href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"  href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet"  href="vendor/animate/animate.css">
+    <link rel="stylesheet"  href="vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet"  href="vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet"  href="vendor/select2/select2.min.css">
+    <link rel="stylesheet"  href="vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet"  href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container-scroller">
+        <!-- partial:../../partials/_navbar.html -->
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo"><img src="images/icons/Logo.png" alt="logo" /></a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-stretch">
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item d-none d-lg-block full-screen-link">
+                        <a class="nav-link">
+                            <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link nav-profile" id="profileDropdown" data-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="images/sampePic/face1.jpg" alt="image">
+                            <span class="d-none d-lg-inline">Daniel Russiel</span>
+                        </a>
+                        <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <i class="mdi mdi-logout mr-2 text-primary"></i>
+                                Signout
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item nav-logout d-none d-lg-block">
+                        <a class="nav-link" href="#">
+                            <i class="mdi mdi-power"></i>
+                        </a>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
+        </nav>
+        <div class="container-fluid page-body-wrapper">
+            <div class="row row-offcanvas row-offcanvas-right">
+                <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="ModelBaju.html">
+                                <span class="menu-title">Model Baju</span>
+                                <i class="mdi mdi-chart-bar menu-icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="BahanBaku.html">
+                                <span class="menu-title">Bahan Baku</span>
+                                <i class="mdi mdi-table-large menu-icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Aksesoris.html">
+                                <span class="menu-title">Aksesoris</span>
+                                <i class="mdi mdi-table-large menu-icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="StatusKirimPemilik.html">
+                                <span class="menu-title">Status Pengiriman</span>
+                                <i class="mdi mdi-table-large menu-icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">
+                                <span class="menu-title">Biaya Jasa Jahit</span>
+                                <i class="mdi mdi-table-large menu-icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">
+                                <span class="menu-title">Laporan</span>
+                                <i class="mdi mdi-table-large menu-icon"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card grid-margin-md-0">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="">
+                                        <h1>Aksesoris</h1>
+                                        <a href="#" class="btn btn-success" data-toggle="modal" data-target="#tambahModel"><i class="fa fa-plus" aria-hidden="true"></i> Tambah aksesoris</a>
+                                        <div class="modal fade" id="tambahModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog" role="document" >
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Tambah Aksesoris</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+
+                                                            <form action="" style="margin-left: 20px;">
+                                                            
+                                                                <label for="fotoModel" style="font-size: 1rem;">Pilih foto</label>
+                                                                <input type="file" id="fotoModel" name="photo" accept=".jpg, .jpeg, .png">
+                                                            </form>
+                                                            <form style="margin-left: 20px; margin-right: 20px; margin-top: -6px;">
+                                                                <div class="form-group">
+                                                                    <label for="nameModel" class="col-form-label">Nama</label>
+                                                                    <input type="text" class="form-control" id="nameModel" placeholder="Masukkan nama baru">
+                                                                </div>
+                                                                <div class="form-group" style="margin-top: -10px;">
+                                                                    <label for="hargaModel" class="col-form-label">Harga</label>
+                                                                    <input type="text" class="form-control" id="hargaModel" placeholder="Masukkan harga baru">
+                                                                </div>
+                                                                <div class="form-group" style="margin-top: -10px;">
+                                                                    <label for="hargaModel" class="col-form-label">Stok</label>
+                                                                    <input type="text" class="form-control" id="hargaModel" placeholder="Masukkan harga baru">
+                                                                </div>
+                                                                <div class="form-group" style="margin-top: -10px;">
+                                                                    <label for="KetModel" class="col-form-label">Keterangan</label>
+                                                                    <input type="text" class="form-control" id="KetModel" placeholder="Masukkan keterangan">
+                                                                </div>
+                                                            </form>
+                                                        
+                                                            
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                            <button type="button" class="btn btn-success">Tambah</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="card border border-primary" style="width: 14rem; margin-top: 20px;">
+                                        <img class="card-img-top" src="images/bahanBakuPic/bahan1.png"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Linen</h5>
+                                            <p class="card-text">Rp 249.999,00</p>
+                                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Edit</button>
+                                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#PopHapus">Hapus</a>
+                                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog" role="document" >
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Edit Model</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <img src="images/bahanBakuPic/bahan1.png" width="140px" style="margin-top: 10px; margin-left: 170px;">
+                                                            <a href="#" style="margin-left: 170px; font-size: 0.9rem;"><input type="file" id="fotoModel" name="photo" accept=".jpg, .jpeg, .png"></a>
+                                                            
+                                                            <p style="margin-left: 20px; color: black; font-size: 1rem;">No. Model  : 0001</p>
+                                                            <p style="margin-left: 20px; color: black; font-size: 1rem; margin-top: -12px;">Nama : Sleeveless cotton shirt </p>
+                                                            <p style="margin-left: 20px; color: black; font-size: 1rem; margin-top: -12px;">Harga   : Rp 249.999,00</p>
+                                                            <p style="margin-left: 20px; color: black; font-size: 1rem; margin-top: -12px;">Ukuran  : XL, L, M, S</p>
+                                                            <p style="margin-left: 20px; color: black; font-size: 1rem;margin-top: -12px;">Keterangan</p>
+                                                            <p style="margin-left: 20px; color: black; font-size: 0.8rem; margin-top: -12px;">
+                                                                Kemeja tanpa lengan dengan bahan katun voile yang lapang dengan kerah, kancing tersembunyi di bagian depan dan bahu yang diturunkan dengan tali untuk efek yang lembut.
+                                                            </p>
+                                                            <form style="margin-left: 20px; margin-right: 20px; margin-top: -6px;">
+                                                                <div class="form-group">
+                                                                    <label for="nameModel" class="col-form-label">Nama</label>
+                                                                    <input type="text" class="form-control" id="nameModel" placeholder="Masukkan nama baru">
+                                                                </div>
+                                                                <div class="form-group" style="margin-top: -10px;">
+                                                                    <label for="hargaModel" class="col-form-label">Harga</label>
+                                                                    <input type="text" class="form-control" id="hargaModel" placeholder="Masukkan harga baru">
+                                                                </div>
+                                                                <div class="form-group" style="margin-top: -10px;">
+                                                                    <label for="hargaModel" class="col-form-label">Stok</label>
+                                                                    <input type="text" class="form-control" id="hargaModel" placeholder="Masukkan harga baru">
+                                                                </div>
+                                                                <div class="form-group" style="margin-top: -10px;">
+                                                                    <label for="KetModel" class="col-form-label">Keterangan</label>
+                                                                    <input type="text" class="form-control" id="KetModel" placeholder="Masukkan keterangan">
+                                                                </div>
+                                                            </form>
+                                                        
+                                                            
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-success">Save changes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal fade" id="PopHapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Konfirmasi</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body" style="font-size: 1rem;">
+                                                            Apakah Anda yakin untuk menghapus bahan baku tersebut?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                            <button type="button" class="btn btn-danger">Hapus</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card border border-primary"
+                                        style="width: 14rem; margin-left: 250px; margin-top: -393px;">
+                                        <img class="card-img-top" src="images/bahanBakuPic/bahan1.png"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Silk</h5>
+                                            <p class="card-text">Rp 249.999,00</p>
+                                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Edit</button>
+                                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#PopHapus">Hapus</a>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="card border border-primary"
+                                        style="width: 14rem; margin-left: 500px; margin-top: -393px;">
+                                        <img class="card-img-top" src="images/bahanBakuPic/bahan1.png"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Cotton</h5>
+                                            <p class="card-text">Rp 249.999,00</p>
+                                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Edit</button>
+                                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#PopHapus">Hapus</a>
+                                        </div>
+                                    </div>
+                                    <div class="card border border-primary"
+                                        style="width: 14rem; margin-left: 750px; margin-top: -393px;">
+                                        <img class="card-img-top" src="images/bahanBakuPic/bahan1.png"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Jute</h5>
+                                            <p class="card-text">Rp 249.999,00</p>
+                                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Edit</button>
+                                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#PopHapus">Hapus</a>
+                                        </div>
+                                    </div>
+                                    <div class="card border border-primary"
+                                        style="width: 14rem; margin-left: 1000px; margin-top: -393px;">
+                                        <img class="card-img-top" src="images/bahanBakuPic/bahan1.png"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Poly Cotton</h5>
+                                            <p class="card-text">Rp 249.999,00</p>
+                                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Edit</button>
+                                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#PopHapus">Hapus</a>
+                                        </div>
+                                    </div>
+                                    <div class="card border border-primary"
+                                        style="width: 14rem; margin-left: 1250px; margin-top: -393px;">
+                                        <img class="card-img-top" src="images/bahanBakuPic/bahan1.png"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Wool</h5>
+                                            <p class="card-text">Rp 249.999,00</p>
+                                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Edit</button>
+                                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#PopHapus">Hapus</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
