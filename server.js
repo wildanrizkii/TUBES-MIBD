@@ -42,9 +42,16 @@ app.get('/KelolaAkun', function(req, res){
         res.render("KelolaAkun", {users: users })
     })
 })
+
+// Tampilan Validasi ADMIN
 app.get('/Validasi', function(req, res){
-    res.render('Validasi')
+    const sql = "SELECT * FROM pesanan"
+    db.query(sql, (err, result) => {
+        const validasi = JSON.parse(JSON.stringify(result))
+        res.render("Validasi", {validasi: validasi })
+    })
 })
+
 app.get('/CekStatus', function(req, res){
     res.render('CekStatus')
 })
@@ -55,13 +62,17 @@ app.get('/UbahStatus', function(req, res){
 // Kelola Akun ADMIN
 app.post("/tambah", (req, res) => {
     console.log(req.params)
-    const {username, password, nama, email, noHp, role, alamat} = req.body
-    const insertSql = `INSERT INTO Pengguna (username, password, nama, email, noHp, role, alamat) VALUES ('${username}', '${password}', '${nama}', '${email}', '${noHp}', '${role}', '${alamat}');`
+    const {username, password, nama, email, noHp, role, alamat, noRek} = req.body
+    const insertSql = `INSERT INTO Pengguna (username, password, nama, email, noHp, role, alamat, noRek) VALUES ('${username}', '${password}', '${nama}', '${email}', '${noHp}', '${role}', '${alamat}', '${noRek}');`
     db.query(insertSql, (err, result) => {
         if (err) throw err
         res.redirect("KelolaAkun")
     })
 })
+
+// Validasi ADMIN
+
+
 
 // SignUp User
 app.post("/signup", (req, res) => {
@@ -76,28 +87,25 @@ app.post("/signup", (req, res) => {
 
 // Update Akun ADMIN
 
-app.get('/update/:id', function(req, res){
+app.get('/edit/:id', async (req, res) => {
     const {id} = req.params
-    const editSql = `SELECT * FROM Pengguna WHERE id = ${id}`
-    db.query(editSql, (err, result) => {
-        if (err)
-            throw err
-        return
-    })
-})
+    db.query(`SELECT * FROM Pengguna WHERE id_pengguna = ${id}`, (err, res) => {
+        res.render('KelolaAkun')
+    });
+});
+app.post('/edit/:id', async (req, res) => {
+    const {id} = req.params
+    const {username, password, nama, email, noHp, role, alamat, noRek} = req.body
+    console.log(req.body)
+    db.query(`UPDATE Pengguna SET username = '${username}', password = '${password}', nama = '${nama}', email = '${email}', noHp = '${noHp}', role = '${role}', alamat = '${alamat}', noRek = '${noRek}' WHERE id_pengguna = ${id}`, (err, rs) => {
+        if (!err)
+            res.redirect('/KelolaAkun')
+        else {
+            console.log(err);
+        }
+    });
+});
 
-app.post("/update/:id", (req, res) => {
-    
-    const {id} = req.params
-    console.log(id)
-    const {username, password, nama, email, noHp, role, alamat} = req.body
-    
-    const updateSql = `UPDATE Pengguna SET? WHERE id_pengguna = ${id}`
-    db.query(updateSql, (err, result) => {
-        if (err) throw err
-        res.render("KelolaAkun")
-    })
-})
 app.get('/ModelBaju', function(req, res){
     res.render('ModelBaju')
 })

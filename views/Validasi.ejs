@@ -15,6 +15,9 @@
     <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
     <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -35,13 +38,13 @@
                         <a class="nav-link nav-profile" id="profileDropdown" data-toggle="dropdown"
                             aria-expanded="false">
                             <img src="images/sampePic/face1.jpg" alt="image">
-                            <span class="d-none d-lg-inline">Daniel Russiel</span>
+                            <span class="d-none d-lg-inline">Admin</span>
                         </a>
                         <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">
                                 <i class="mdi mdi-logout mr-2 text-primary"></i>
-                                Signout
+                                Logout
                             </a>
                         </div>
                     </li>
@@ -100,13 +103,16 @@
                                                 <th>ID Transaksi</th>
                                                 <th>Bukti Transaksi</th>
                                                 <th>Tanggal Transaksi</th>
-                                                <th colspan="2">Ubah</th>
+                                                <th>Ubah</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <% var i = 1 %>
+                                        
+                                            <% for (let val of validasi) {%>
                                             <tr>
-                                                <td>1</td>
-                                                <td>200001</td>
+                                                <td scope="row"><%= i %></td>
+                                                <td scope="row"><%= val.no_transaksi %></td>
                                                 <td><a href="#">Lihat Bukti Pembayaran</a></td>
                                                 <td>2022-05-05</td>
                                                 <td><Button class="badge badge-info">Validasi</Button></td>
@@ -136,6 +142,8 @@
                                                 <td><Button class="badge badge-info">Validasi</Button></td>
                                                 <td><Button class="badge badge-danger">Batalkan</Button></td>
                                             </tr>
+                                            <% i++ %>
+                                            <% } %>
                                         </tbody>
                                     </table>
                                 </div>
