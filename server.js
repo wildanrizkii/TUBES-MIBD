@@ -52,6 +52,32 @@ app.get('/Validasi', function(req, res){
     })
 })
 
+
+// LOGIN SESSION
+app.get('/', function(request, response) {
+
+	response.sendFile(path.join(__dirname + '/Login'));
+});
+app.post('/auth', function(request, response) {
+
+	let email = request.body.email;
+	let password = request.body.password;
+    console.log(request.body.email)
+    console.log(request.body.password)
+
+	if (email && password) {
+		db.query('SELECT * FROM Pengguna WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
+			if (error) throw error;
+			else response.redirect('/KelolaAkun');
+		});
+	} else {
+		response.send('Please enter Email and Password!');
+		response.end();
+	}
+});
+
+
+
 app.get('/CekStatus', function(req, res){
     res.render('CekStatus')
 })
@@ -106,8 +132,18 @@ app.post('/edit/:id', async (req, res) => {
     });
 });
 
+// HALAMAN PEMILIK
 app.get('/ModelBaju', function(req, res){
     res.render('ModelBaju')
+})
+app.get('/BahanBaku', function(req, res){
+    res.render('BahanBaku')
+})
+app.get('/Aksesoris', function(req, res){
+    res.render('Aksesoris')
+})
+app.get('/StatusKirimPemilik', function(req, res){
+    res.render('StatusKirimPemilik')
 })
 
 app.get('/deleteAkun/:id', async (req,res) => {

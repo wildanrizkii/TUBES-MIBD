@@ -43,7 +43,7 @@
                         </a>
                         <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="Login">
                                 <i class="mdi mdi-logout mr-2 text-primary"></i>
                                 Logout
                             </a>
@@ -149,7 +149,7 @@
                                                                         <div class="row mb-3">
                                                                             <label for="password" class="col-sm-3 col-form-label">Password</label>
                                                                             <div class="col-sm-10">
-                                                                                <input type="text" name = "password" class="form-control" value="<%= user.password %>">
+                                                                                <input type="password" name = "password" class="form-control" value="<%= user.password %>">
                                                                             </div>
                                                                         </div>
                                                                         <div class="row mb-3">
@@ -161,7 +161,7 @@
                                                                         <div class="row mb-3">
                                                                             <label for="role" class="col-sm-3 col-form-label">Email</label>
                                                                             <div class="col-sm-10">
-                                                                                <input type="text" name = "email" class="form-control" value="<%= user.email %>">
+                                                                                <input type="email" name = "email" class="form-control" value="<%= user.email %>">
                                                                             </div>
                                                                         </div>
                                                                         <div class="row mb-3">
@@ -207,7 +207,7 @@
                                                     </td>
                                                 </tr>
                                                 <% i++ %>
-                                                <% } %>
+                                            <% } %>
                                         </tbody>
                                     </table>
                                 </div>
@@ -238,7 +238,7 @@
                                                 <div class="row mb-3">
                                                     <label for="password" class="col-sm-3 col-form-label">Password</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" name = "password" class="form-control">
+                                                        <input type="password" name = "password" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
@@ -250,13 +250,13 @@
                                                 <div class="row mb-3">
                                                     <label for="role" class="col-sm-3 col-form-label">Email</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" name = "email" class="form-control">
+                                                        <input type="email" name = "email" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <label for="role" class="col-sm-3 col-form-label">No. HP</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" name = "noHp" class="form-control">
+                                                        <input type="number" name = "noHp" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
