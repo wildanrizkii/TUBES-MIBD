@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2022 at 07:59 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Jun 25, 2022 at 10:19 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,26 +24,14 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `akse`
---
-
-CREATE TABLE `akse` (
-  `id_aksesoris` int(8) NOT NULL,
-  `no_pesanan` int(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `aksesoris`
 --
 
 CREATE TABLE `aksesoris` (
   `id_aksesoris` int(8) NOT NULL,
   `stok` int(8) NOT NULL,
-  `jenis` varchar(16) NOT NULL,
-  `harga_beli` varchar(60) NOT NULL,
-  `harga_jual` varchar(60) NOT NULL,
+  `nama_aksesoris` varchar(16) NOT NULL,
+  `harga` varchar(60) NOT NULL,
   `fotoAksesoris` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -51,19 +39,8 @@ CREATE TABLE `aksesoris` (
 -- Dumping data for table `aksesoris`
 --
 
-INSERT INTO `aksesoris` (`id_aksesoris`, `stok`, `jenis`, `harga_beli`, `harga_jual`, `fotoAksesoris`) VALUES
-(1, 10, 'BT01', '200000', '300000', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bahan`
---
-
-CREATE TABLE `bahan` (
-  `id_bahan` int(8) NOT NULL,
-  `no_pesanan` int(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `aksesoris` (`id_aksesoris`, `stok`, `nama_aksesoris`, `harga`, `fotoAksesoris`) VALUES
+(1, 10, 'BT01', '300000', '');
 
 -- --------------------------------------------------------
 
@@ -74,8 +51,7 @@ CREATE TABLE `bahan` (
 CREATE TABLE `bahan_baku` (
   `id_bahan` int(8) NOT NULL,
   `jenis` varchar(16) NOT NULL,
-  `harga_beli` varchar(60) NOT NULL,
-  `harga_jual` varchar(60) NOT NULL,
+  `harga` varchar(60) NOT NULL,
   `fotoBahan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -83,9 +59,9 @@ CREATE TABLE `bahan_baku` (
 -- Dumping data for table `bahan_baku`
 --
 
-INSERT INTO `bahan_baku` (`id_bahan`, `jenis`, `harga_beli`, `harga_jual`, `fotoBahan`) VALUES
-(1, 'Katun', '50000', '150000', ''),
-(2, 'Linen', '30000', '100000', '');
+INSERT INTO `bahan_baku` (`id_bahan`, `jenis`, `harga`, `fotoBahan`) VALUES
+(1, 'Katun', '150000', ''),
+(2, 'Linen', '100000', '');
 
 -- --------------------------------------------------------
 
@@ -123,25 +99,13 @@ INSERT INTO `kurir` (`id_kurir`, `nama_kurir`, `ekspedisi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `model`
---
-
-CREATE TABLE `model` (
-  `id_model` int(8) NOT NULL,
-  `no_pesanan` int(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `model_baju`
 --
 
 CREATE TABLE `model_baju` (
   `id_model` int(8) NOT NULL,
   `id_Ukuran` int(8) NOT NULL,
-  `harga_beli` varchar(60) NOT NULL,
-  `harga_jual` varchar(60) NOT NULL,
+  `harga` varchar(60) NOT NULL,
   `fotoModel` varchar(255) NOT NULL,
   `id_bahan` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -170,9 +134,11 @@ CREATE TABLE `pengguna` (
 
 INSERT INTO `pengguna` (`id_pengguna`, `username`, `password`, `nama`, `email`, `noHP`, `role`, `alamat`, `noRek`) VALUES
 (14, 'wildanrizkii', 'wildan123', 'Wildan', 'wildanrizki9560@gmail.com', '089646436360', 'pemilik', 'Jalan Batik Pekalongan No. 36', '088945223'),
-(52, 'admin1', 'admin1123', 'Brendo', 'brendo@gmail.com', '089646436312', 'admin', '', '0'),
-(53, 'admin2', 'admin2123', 'Budi', 'bud212@gmail.com', '089646436360', 'admin', '', '0'),
-(72, 'user1', 'user123', 'Brendo', 'brendo@gmail.com', '089646436360', 'user', 'Jalan Rereng \r\nAdumanis No.3', 'undefined');
+(52, 'brendo', 'brendo', 'Brendo', 'brendo@gmail.com', '089646436312', 'admin', 'Jalan Soekarno Hatta No.1', 'undefined'),
+(53, 'budi123', 'admin2123', 'Budi', 'bud212@gmail.com', '089646436360', 'admin', 'Jalan Cikutra No.1', 'undefined'),
+(72, 'user1', 'user123', 'Brendo', 'brendo@gmail.com', '089646436360', 'user', 'Jalan Rereng \r\nAdumanis No.3', 'undefined'),
+(75, 'user4', 'user', 'Sergio', 'lozhechnikov@yahoo.com', '80689689696', 'user', 'Jalan Jalan', 'undefined'),
+(81, 'user6', 'user6', 'user6', 'user6@gmail.com', '0857213212', 'user', 'Jalan Ligar Manah', 'undefined');
 
 -- --------------------------------------------------------
 
@@ -330,7 +296,7 @@ ALTER TABLE `model_baju`
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id_pengguna` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id_pengguna` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `pesanan`
